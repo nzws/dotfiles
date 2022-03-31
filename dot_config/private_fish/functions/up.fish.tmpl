@@ -1,8 +1,11 @@
 function up
-# echo "Updating packages..."
-# sudo apt update
-# sudo apt upgrade
-# sudo apt autoremove
+
+{{ if eq .chezmoi.os "linux" }}
+echo "Updating packages..."
+sudo apt update
+sudo apt upgrade
+sudo apt autoremove
+{{ end }}
 
 echo "Updating homebrew..."
 brew update

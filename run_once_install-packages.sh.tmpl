@@ -1,0 +1,20 @@
+#!/bin/sh
+set -x #echo on
+
+# Installer dependencies
+# {{ include "dot_packages/brew.txt.tmpl" | sha256sum }}
+# {{ include "dot_packages/asdf_plugins.txt.tmpl" | sha256sum }}
+
+# Install homebrew
+if test ! $(command -v brew); then
+  echo "Installing homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# Install homebrew packages
+brew install $(echo $(cat ~/.packages/brew.txt))
+
+# Install asdf plugins
+cat ~/.packages/asdf_plugins.txt | while read plugin; do
+  asdf plugin add $plugin
+done
