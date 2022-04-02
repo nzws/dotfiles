@@ -1,0 +1,4 @@
+echo "Sorry, The platform could not be detected from User agent."
+echo "Please specify the script manually."
+echo "- Linux/macOS: https://setup.yuzu.sh/setup_linux_and_darwin.sh"
+echo "- Windows: https://setup.yuzu.sh/setup_windows.ps1"

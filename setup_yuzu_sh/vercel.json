@@ -1,5 +1,5 @@
 {
-  "rewrites": [{ "source": "/", "destination": "/scripts/setup.sh" }],
+  "rewrites": [{ "source": "/", "destination": "/setup_linux_and_darwin.sh" }],
   "headers": [
     {
       "source": "/(.*)",
