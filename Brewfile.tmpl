@@ -1,0 +1,54 @@
+tap "homebrew/bundle"
+tap "homebrew/core"
+
+# Linux & macOS
+brew "asdf"
+brew "chezmoi"
+brew "clang-format"
+brew "cmake"
+brew "exa"
+brew "fish"
+brew "gh"
+brew "ghq"
+brew "starship"
+brew "yarn"
+
+{{ if eq .chezmoi.os "darwin" }}
+tap "homebrew/cask"
+
+# Only macOS
+brew "mas"
+cask "discord"
+cask "google-chrome"
+cask "iterm2"
+cask "visual-studio-code"
+
+mas "1Password 7", id: 1333542190
+mas "Actions", id: 1586435171
+mas "Controller", id: 1198176727
+mas "Magnet", id: 441258766
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "NextDNS", id: 1464122853
+mas "Slack", id: 803453959
+
+# macOS Default Apps
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+
+{{ else if eq .chezmoi.os "linux" }}
+
+# Only Linux
+
+brew "readline"
+brew "gettext"
+brew "gnutls"
+brew "cups"
+brew "gcc"
+brew "util-linux"
+brew "glib"
+brew "fontconfig"
+brew "swagger-codegen"
+
+{{ end }}

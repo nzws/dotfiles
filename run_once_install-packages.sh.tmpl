@@ -2,7 +2,7 @@
 set -x #echo on
 
 # Installer dependencies
-# {{ include "dot_packages/brew.txt.tmpl" | sha256sum }}
+# {{ include "Brewfile.tmpl" | sha256sum }}
 # {{ include "dot_packages/asdf_plugins.txt.tmpl" | sha256sum }}
 
 # Install homebrew
@@ -12,9 +12,19 @@ if test ! $(command -v brew); then
 fi
 
 # Install homebrew packages
-brew install $(echo $(cat ~/.packages/brew.txt))
+brew bundle
+brew bundle cleanup
+
+# Set fish as default shell
+FISH_PATH="$(command -v fish)"
+if ! grep -Fxq "$FISH_PATH" /etc/shells; then
+  sudo echo "$FISH_PATH" >> /etc/shells
+  sudo chsh -s "$FISH_PATH" "$USER"
+fi
 
 # Install asdf plugins
 cat ~/.packages/asdf_plugins.txt | while read plugin; do
   asdf plugin add $plugin
 done
+
+exit 0
