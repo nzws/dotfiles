@@ -3,7 +3,7 @@ set -x #echo on
 
 # Installer dependencies
 # {{ include "Brewfile.tmpl" | sha256sum }}
-# {{ include "dot_packages/asdf_plugins.txt.tmpl" | sha256sum }}
+# {{ include "config/asdf_plugins.txt.tmpl" | sha256sum }}
 
 sudo -v
 
@@ -35,7 +35,7 @@ if ! sudo grep -Fxq "$FISH_PATH" /etc/shells; then
 fi
 
 # Install asdf plugins
-cat ~/.packages/asdf_plugins.txt | while read plugin; do
+cat ~/config/asdf_plugins.txt | while read plugin; do
   asdf plugin add $plugin
 done
 
