@@ -5,15 +5,16 @@ end
 {{ if eq .chezmoi.os "darwin" }}
 
 eval (/opt/homebrew/bin/brew shellenv)
-source /opt/homebrew/opt/asdf/libexec/asdf.fish
 
 {{ else if eq .chezmoi.os "linux" }}
 
 fish_add_path /home/linuxbrew/.linuxbrew/bin
 eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-source ~/.asdf/asdf.fish
 
 {{ end }}
 
+source (brew --prefix asdf)/libexec/asdf.fish
 export EDITOR="code -w"
 starship init fish | source
+
+echo "test!"

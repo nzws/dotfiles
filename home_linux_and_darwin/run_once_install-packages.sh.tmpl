@@ -5,10 +5,22 @@ set -x #echo on
 # {{ include "Brewfile.tmpl" | sha256sum }}
 # {{ include "dot_packages/asdf_plugins.txt.tmpl" | sha256sum }}
 
+sudo -v
+
 # Install homebrew
 if test ! $(command -v brew); then
   echo "Installing homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  # Run shellenv
+  if test -f "/home/linuxbrew/.linuxbrew/bin/brew"; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  elif test -f "/opt/homebrew/bin/brew"; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  else
+    echo "Error: brew seems to be missing, please run shellenv manually and install this dotfiles again."
+    exit 1
+  fi
 fi
 
 # Install homebrew packages
@@ -17,7 +29,7 @@ brew bundle cleanup
 
 # Set fish as default shell
 FISH_PATH="$(command -v fish)"
-if ! grep -Fxq "$FISH_PATH" /etc/shells; then
+if ! sudo grep -Fxq "$FISH_PATH" /etc/shells; then
   sudo echo "$FISH_PATH" >> /etc/shells
   sudo chsh -s "$FISH_PATH" "$USER"
 fi

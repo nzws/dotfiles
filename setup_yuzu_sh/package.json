@@ -1,0 +1,13 @@
+{
+  "name": "setup.yuzu.sh",
+  "version": "0.0.0",
+  "repository": "https://github.com/nzws/setup.yuzu.sh",
+  "author": "nzws <dev@nzws.me>",
+  "private": true,
+  "devDependencies": {
+    "vercel": "^24.0.1"
+  },
+  "scripts": {
+    "_dev": "vercel dev"
+  }
+}
