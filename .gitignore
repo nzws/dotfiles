@@ -149,3 +149,8 @@ dist
 
 dot_DS_Store
 .DS_Store
+
+# fish
+fish_history
+fishd.*
+fish_variables
