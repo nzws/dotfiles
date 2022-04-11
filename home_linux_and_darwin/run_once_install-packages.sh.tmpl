@@ -39,4 +39,9 @@ cat ~/config/asdf_plugins.txt | while read plugin; do
   asdf plugin add $plugin
 done
 
+# Install Rosetta 2
+{{ if eq .chezmoi.os "darwin" }}
+softwareupdate --install-rosetta --agree-to-license
+{{ end }}
+
 exit 0
