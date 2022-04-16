@@ -1,3 +1,6 @@
+# Clone repository from github.com using ghq and open vscode
+# Usage: `gg nzws/dotfiles`
+
 function gg
 	set --local gg_path ~/ghq/github.com/$argv
 
