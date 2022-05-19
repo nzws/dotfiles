@@ -3,7 +3,7 @@ function fish_greeting
 
   echo 👋 @(whoami) on (hostname)
   echo (date "+%Y/%m/%d %H:%M:%S") / UNIX: (date +%s) / UTC: (date -u "+%m/%d %H:%M")
-  echo LOADAVG: $(cat /proc/loadavg | awk '{print $1" / "$2" / "$3}')
+  echo (uptime)
 
   set_color normal
 end
