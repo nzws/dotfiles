@@ -1,7 +1,7 @@
 # Verify & Install script: https://github.com/nzws/setup.yuzu.sh
 
 # Note: To update the hash, use `sh scripts/update-hash.sh`
-VERIFY_HASH="c5a525d494bc41c065f35deb2077770182405e57594f047a62ebf6c95b87cbb4"
+VERIFY_HASH="28c37adfa7b8ba3e5a51d615da74ef3df72f8eb14920348e7800a2726ff18e4a"
 
 PF="[setup.yuzu.sh]"
 GH_USERNAME="nzws"
